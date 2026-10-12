@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurator | AURUM MOTORS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">AURUM</div>
+            <ul>
+                <li><a href="index.html">Showroom</a></li>
+                <li><a href="specs.html">Specifications</a></li>
+                <li><a href="portal.html">Owner Portal</a></li>
+                <li><a href="configure.html" class="active">Configure</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" style="max-width: 1400px;">
+        <h1>Bespoke <wbr>Studio</h1>
+        
+        <div class="config-layout mt-4">
+            <!-- Left Side: Live Visual Configurator -->
+            <div class="config-preview">
+                <div class="car-wrapper">
+                    <!-- Base image is pure blue. We use filter: hue-rotate() to change its color -->
+                    <img src="img/config_car_blue.png" alt="Car Base" class="car-base-img" id="carBaseImg">
+                </div>
+                <div class="mt-4 text-center">
+                    <p style="color: var(--cyan); letter-spacing: 2px; text-transform: uppercase;" id="colorNameDisplay">Quantum Cyan</p>
+                </div>
+            </div>
+
+            <!-- Right Side: Controls -->
+            <div class="config-controls">
+                <form id="configForm" action="#" method="POST">
+                    <fieldset>
+                        <legend>1. Exterior Finish</legend>
+                        <p class="text-muted">Select an exclusive metallic paint finish.</p>
+                        <div class="swatch-grid" id="colorSwatches">
+                            <!-- Data attributes hold the hue rotation and the price -->
+                            <div class="swatch active" style="background: #00E5FF;" data-hue="0deg" data-name="Jet Stream Blue" data-price="0"></div>
+                            <div class="swatch" style="background: #8B0000;" data-hue="130deg" data-name="Carmine Red" data-price="25000"></div>
+                            <div class="swatch" style="background: #D4AF37;" data-hue="-150deg" data-name="Sable Bronze" data-price="45000"></div>
+                            <div class="swatch" style="background: #1a523a;" data-hue="-200deg" data-name="British Racing Green" data-price="55000"></div>
+                            <div class="swatch" style="background: #800080;" data-hue="50deg" data-name="Amethyst Violet" data-price="35000"></div>
+                            <!-- Black/Silver can be achieved via grayscale -->
+                            <div class="swatch" style="background: #222;" data-hue="grayscale(1) brightness(0.5)" data-name="Meteor Grey" data-price="15000"></div>
+                            <div class="swatch" style="background: #C0C0C0;" data-hue="grayscale(1) brightness(1.5)" data-name="GT Silver" data-price="20000"></div>
+                        </div>
+                        <input type="hidden" name="selectedColor" id="selectedColor" value="Jet Stream Blue">
+                        <input type="hidden" id="colorPrice" value="0">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>2. Wheels & Calipers</legend>
+                        <p class="text-muted">Aerodynamic forged alloys.</p>
+                        <label for="wheelsSelect">Wheel Style</label>
+                        <select id="wheelsSelect" name="wheelsSelect" onchange="updateTotalPrice()">
+                            <option value="0">20" Aero Forged (Standard)</option>
+                            <option value="12000">21" Spyder Design (+$12,000)</option>
+                            <option value="18000">22" Magnesium GT (+$18,000)</option>
+                        </select>
+                        <label for="caliperSelect">Caliper Color</label>
+                        <select id="caliperSelect" name="caliperSelect">
+                            <option>Stealth Black</option>
+                            <option>Sable Bronze</option>
+                            <option>Jet Stream Blue</option>
+                        </select>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>3. Interior Cabin</legend>
+                        <p class="text-muted">Bespoke materials tailored to you.</p>
+                        <label for="interiorSelect">Material Package</label>
+                        <select id="interiorSelect" name="interiorSelect" onchange="updateTotalPrice()">
+                            <option value="0">Vegan Leather & Carbon Trim</option>
+                            <option value="25000">Milano Leather & Wood (+$25,000)</option>
+                            <option value="35000">Alcantara Track Spec (+$35,000)</option>
+                        </select>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>4. Performance Trim</legend>
+                        <label for="trimSelect">Select Package</label>
+                        <select id="trimSelect" name="trimSelect" onchange="updateTotalPrice()" required>
+                            <optgroup label="Grand Touring">
+                                <option value="150000">E-GT Standard ($150,000)</option>
+                                <option value="185000">E-GT Touring ($185,000)</option>
+                            </optgroup>
+                            <optgroup label="Performance">
+                                <option value="210000">E-GT S ($210,000)</option>
+                            </optgroup>
+                        </select>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>5. Client Details</legend>
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+
+                        <label for="region">Delivery Region</label>
+                        <input list="regions" name="region" id="region" placeholder="Select or type region...">
+                        <datalist id="regions">
+                            <option value="NA-US">North America</option>
+                            <option value="EU-CH">Europe - Switzerland</option>
+                            <option value="AS-JP">Asia - Japan</option>
+                            <option value="ME-AE">Middle East - UAE</option>
+                        </datalist>
+
+                        <label for="customNotes">Bespoke Interior Requirements</label>
+                        <textarea id="customNotes" name="customNotes" rows="3" placeholder="e.g. Alcantara steering wheel, custom embroidery..."></textarea>
+                    </fieldset>
+
+                    <div style="font-size: 1.8rem; text-align: right; margin: 1.5rem 0; color: var(--gold); border-top: 1px solid var(--border-glass); padding-top: 1rem;">
+                        Total: $<output id="priceOutputDisplay">150,000</output>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%;">Finalize Commission</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-4" style="margin-top: 4rem;">
+            <h3>Allocation Status</h3>
+            <p>Global production capacity: <meter value="0.92" min="0" max="1" low="0.2" high="0.8" optimum="0.5"></meter> 92% booked.</p>
+            <p>Waitlist processing: <progress value="85" max="100"></progress> 85%</p>
+        </div>
+
+        <div class="mt-4" style="margin-bottom: 4rem;">
+            <h3 style="margin-bottom: 1.5rem; font-weight: 300; border-bottom: 1px solid var(--border-glass); padding-bottom: 1rem;">Frequently Asked Questions</h3>
+            
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: 400; font-size: 1.1rem; color: var(--text-main);">What is the required deposit to secure a build allocation?</summary>
+                <p style="padding-left: 1rem; margin-top: 0.8rem; color: var(--text-muted); font-size: 0.95rem;">A 20% non-refundable deposit is required to secure your exclusive chassis number and begin the bespoke tailoring process.</p>
+            </details>
+            
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: 400; font-size: 1.1rem; color: var(--text-main);">When will delivery commence?</summary>
+                <p style="padding-left: 1rem; margin-top: 0.8rem; color: var(--text-muted); font-size: 0.95rem;">Deliveries for the E-GT begin in Q3 2026 for North American markets, followed by Europe and Asia in Q4 2026. Custom bespoke options may add 4-6 weeks to production time.</p>
+            </details>
+
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: 400; font-size: 1.1rem; color: var(--text-main);">Does the vehicle come with a home charging solution?</summary>
+                <p style="padding-left: 1rem; margin-top: 0.8rem; color: var(--text-muted); font-size: 0.95rem;">Yes. Every E-GT includes a complimentary 22kW AURUM Wallbox installed at your residence by our certified network of electricians.</p>
+            </details>
+
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: 400; font-size: 1.1rem; color: var(--text-main);">What kind of warranty is included?</summary>
+                <p style="padding-left: 1rem; margin-top: 0.8rem; color: var(--text-muted); font-size: 0.95rem;">The E-GT is backed by a 4-year/50,000-mile comprehensive warranty, and an industry-leading 10-year unlimited-mile warranty on the high-voltage battery architecture.</p>
+            </details>
+            
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: 400; font-size: 1.1rem; color: var(--text-main);">Can I test drive the E-GT before finalizing?</summary>
+                <p style="padding-left: 1rem; margin-top: 0.8rem; color: var(--text-muted); font-size: 0.95rem;">Private track days and VIP test drives are arranged exclusively for deposit-holders through our Concierge service in select global hubs (Geneva, Los Angeles, Dubai).</p>
+            </details>
+        </div>
+
+        <dialog id="successDialog">
+            <h3 style="color: var(--cyan); margin-bottom: 1rem;">Commission Secured</h3>
+            <p id="dialogMsg">Your bespoke E-GT has been logged in our system. A concierge will contact you to arrange the deposit.</p>
+            <button type="button" class="btn-primary mt-4" id="closeDialogBtn" style="width: 100%;">Close</button>
+        </dialog>
+
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <address>
+                <strong>AURUM Motors HQ</strong><br>
+                100 Quantum Drive<br>
+                Geneva, Switzerland 1201<br>
+                <a href="mailto:contact@aurummotors.com">contact@aurummotors.com</a>
+            </address>
+            <div class="text-right">
+                <small>&copy; <time datetime="2026">2026</time> AURUM Motors. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

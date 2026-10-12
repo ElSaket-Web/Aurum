@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specifications | AURUM MOTORS</title>
+    <base href="./">
+    <basefont size="3" face="Inter">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">AURUM</div>
+            <ul>
+                <li><a href="index.html">Showroom</a></li>
+                <li><a href="specs.html" class="active">Specifications</a></li>
+                <li><a href="portal.html">Owner Portal</a></li>
+                <li><a href="configure.html">Configure</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Engineering <wbr>Specifications</h1>
+        <p><em>Zero Emissions. Maximum Thrill.</em> (CO<sub>2</sub> output: 0g/km)</p>
+        
+        <article class="glass-panel">
+            <h2>The Powertrain</h2>
+            <img src="img/aurum_motor.png" alt="Quantum Motor Details">
+            <p>Our proprietary <dfn>Flux-Density Engine</dfn> marks a departure from standard <acronym title="Alternating Current">AC</acronym> induction motors. Developed alongside <abbr title="Fédération Internationale de l'Automobile">FIA</abbr> engineers, it produces unparalleled torque.</p>
+            
+            <p><strong><ruby>電<rt>Denki</rt><rp>(</rp><rp>)</rp></ruby></strong> (Electricity) is managed via our <q>Hyperflow</q> architecture.</p>
+
+            <dl>
+                <dt>Battery Chemistry</dt>
+                <dd>Solid-State Lithium-Ceramic (<var>x</var> = 0.5)</dd>
+                <dt>Output</dt>
+                <dd>2,100 Horsepower (1,566 kW)</dd>
+            </dl>
+
+            <hr>
+            
+            <h3>Telemetry Integration</h3>
+            <p>Developers can access live telemetry using the <samp>aurum-os</samp> SDK:</p>
+            <pre><code>
+import aurum
+<var>car</var> = aurum.connect('VIN_12345')
+print(<var>car</var>.get_battery_status())
+            </code></pre>
+            <p>Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to terminate the serial connection.</p>
+        </article>
+
+        <section class="mt-4">
+            <h2>Performance Metrics</h2>
+            <table>
+                <caption>Track Tested Capabilities</caption>
+                <colgroup>
+                    <col style="width: 50%;">
+                    <col style="width: 50%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0 - 100 km/h</td>
+                        <td><data value="1.85">1.85 seconds</data></td>
+                    </tr>
+                    <tr>
+                        <td>Top Speed</td>
+                        <td>412 km/h (Electronically Limited)</td>
+                    </tr>
+                    <tr>
+                        <td>Range (WLTP)</td>
+                        <td><del>800 km</del> <ins>1,050 km</ins> (New Firmware)</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Certified by AURUM Dynamics, <time datetime="2026-05">May 2026</time></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="glass-panel mt-4">
+                <h3>Materials & Features</h3>
+                <div class="grid-2">
+                    <div>
+                        <h4>Exterior Options</h4>
+                        <ul>
+                            <li>Exposed Forged Carbon</li>
+                            <li>Titanium Accents</li>
+                            <li>Electrochromic Glass</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Driving Modes</h4>
+                        <ol>
+                            <li><i>Grand Touring</i> - Comfort focused</li>
+                            <li><b>Corsa</b> - Track optimal</li>
+                            <li><u>Quantum</u> - Maximum theoretical output</li>
+                        </ol>
+                        <p><s>Ludicrous Mode</s> has been officially replaced by Quantum Mode.</p>
+                        <p><mark>Warning: Quantum Mode requires proper track tires.</mark></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <h4>International Markets</h4>
+                <p>Regional Code: <bdo dir="rtl">MRUA-001</bdo></p>
+                <p>Lead Engineer: <bdi>佐藤</bdi> (Tokyo Division)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <address>
+                <strong>AURUM Motors HQ</strong><br>
+                100 Quantum Drive<br>
+                Geneva, Switzerland 1201<br>
+                <a href="mailto:contact@aurummotors.com">contact@aurummotors.com</a>
+            </address>
+            <div class="text-right">
+                <small>&copy; <time datetime="2026">2026</time> AURUM Motors. All rights reserved.</small><br>
+                <small>Pricing in <sup>USD</sup> and subject to change without notice.</small>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <h6>End of Specifications</h6>
+        </div>
+    </footer>
+</body>
+</html>

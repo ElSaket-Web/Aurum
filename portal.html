@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Portal | AURUM MOTORS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-canvas {
+            width: 100%;
+            height: 200px;
+            background: #000;
+            border: 1px solid var(--cyan);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">AURUM</div>
+            <ul>
+                <li><a href="index.html">Showroom</a></li>
+                <li><a href="specs.html">Specifications</a></li>
+                <li><a href="portal.html" class="active">Owner Portal</a></li>
+                <li><a href="configure.html">Configure</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Live <wbr>Telemetry</h1>
+        
+        <noscript>
+            <div class="glass-panel" style="border-color: #ff5555;">
+                <p><strong>Warning:</strong> JavaScript is disabled. Live telemetry requires JavaScript to function properly.</p>
+            </div>
+        </noscript>
+
+        <div class="grid-2 mt-4">
+            <div class="glass-panel text-center">
+                <h3>Motor Diagnostics (Canvas)</h3>
+                <canvas id="diagCanvas" class="dashboard-canvas"></canvas>
+                
+                <div class="mt-4 text-left">
+                    <p>Status: <span id="sysStatus" style="color: var(--cyan);">OPTIMAL</span></p>
+                </div>
+            </div>
+
+            <div class="glass-panel text-center">
+                <h3>Acoustic Signature</h3>
+                <p>Simulated cabin acoustics during Quantum acceleration.</p>
+                
+                <audio controls class="mt-2" style="width: 100%;">
+                    <source src="img/motor_sound.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <div class="mt-4">
+                    <svg width="150" height="80" viewBox="0 0 150 80">
+                        <path d="M0 40 Q 25 10 50 40 T 100 40 T 150 40" stroke="#D4AF37" fill="transparent" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel mt-4">
+            <h2>Vehicle Documentation</h2>
+            <object data="aurum_manual.pdf" type="application/pdf" width="100%" height="400px" style="border: 1px solid var(--border-glass);">
+                <param name="view" value="Fit">
+                <embed src="aurum_manual.pdf" type="application/pdf" width="100%" height="400px" />
+                <p>Your browser doesn't have a PDF plugin. You can <a href="aurum_manual.pdf">click here to download the manual.</a></p>
+            </object>
+        </div>
+
+        <div class="glass-panel mt-4 grid-2">
+            <div>
+                <h3>Track Telemetry System</h3>
+                <video controls width="100%" poster="img/car_real_hero.png" style="border-radius: 4px; border: 1px solid var(--border-glass);" autoplay loop muted>
+                    <source src="web_telemetry.mp4" type="video/mp4">
+                    <track src="captions.vtt" kind="captions" srclang="en" label="English">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div>
+                <h3>Global Delivery Network</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.3413813359676!2d6.1431577!3d46.2043907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c65275e0e0a5d%3A0x6fb87816bb6e42b8!2sGeneva%2C%20Switzerland!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" width="100%" height="250" style="border:0; border-radius: 4px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        
+        <div id="toast-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 10000;"></div>
+
+        <template id="toast-template">
+            <div class="glass-panel" style="padding: 1rem; margin-top: 1rem; border-color: var(--cyan); display: flex; justify-content: space-between; align-items: center; min-width: 250px;">
+                <span class="toast-msg"></span>
+                <button type="button" class="toast-close" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;">&times;</button>
+            </div>
+        </template>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <address>
+                <strong>AURUM Motors HQ</strong><br>
+                100 Quantum Drive<br>
+                Geneva, Switzerland 1201<br>
+                <a href="mailto:contact@aurummotors.com">contact@aurummotors.com</a>
+            </address>
+            <div class="text-right">
+                <small>&copy; <time datetime="2026">2026</time> AURUM Motors. All rights reserved.</small><br>
+                <small>Pricing in <sup>USD</sup> and subject to change without notice.</small>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <h6>End of Portal</h6>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
